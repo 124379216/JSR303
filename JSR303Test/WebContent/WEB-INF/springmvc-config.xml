@@ -15,8 +15,10 @@
     <!-- spring可以自动去扫描base-pack下面的包或者子包下面的java文件，
     	如果扫描到有Spring的相关注解的类，则把这些类注册为Spring的bean -->
     <context:component-scan base-package="org.fkit"/>
-   
+    
     <mvc:annotation-driven/>
+    
+    <bean class="org.fkit.event.util.SpringContextHolder" />
  
   <!-- 国际化 -->  
 	<bean id="messageSource"  

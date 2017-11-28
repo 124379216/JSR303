@@ -3,12 +3,13 @@ package org.fkit.controller;
 
 import javax.validation.Valid;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.fkit.domain.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,11 +42,14 @@ public class UserController{
 	// 数据校验使用@Valid，后面跟着Errors对象保存校验信息
 	 @RequestMapping(value="/login",method=RequestMethod.POST)
 	 public String login(
-			 @Valid @ModelAttribute  User user,
-			 Errors  errors,
+			 @Valid @ModelAttribute("user")  User user,
+			 BindingResult bindingResult,
 			 Model model) {
 		 logger.info(user);
-		 if(errors.hasErrors()){
+		 logger.info(user.getStudent());
+		 logger.info(StringUtils.isNotEmpty(user.getStudent().getuName())?1:0);
+		 logger.info(bindingResult.hasErrors());
+		 if(bindingResult.hasErrors()){
 			 return "registerForm";
 		 }
 		 model.addAttribute("user", user);

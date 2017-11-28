@@ -9,12 +9,18 @@
 </head>
 <body>
 <h3>注册页面</h3>
-<form:form modelAttribute="user" method="post" action="login" >
+<!-- modelAttribute="user" -->
+<form:form commandName="user" method="post" action="login" >
 	<table>
 		<tr>
 			<td>登录名:</td>
 			<td><form:input path="loginname"/></td>
 			<td><form:errors path="loginname" cssStyle= "color:red"/></td>
+		</tr>
+		<tr>
+			<td>金额:</td>
+			<td><form:input path="money"/></td>
+			<td><form:errors path="money" cssStyle= "color:red"/></td>
 		</tr>
 		<tr>
 			<td>密码:</td>
@@ -45,6 +51,16 @@
 			<td>电话:</td>
 			<td><form:input path="phone"/></td>
 			<td><form:errors path="phone" cssStyle= "color:red"/></td>
+		</tr>
+		<tr>
+			<td>测试姓名字段：</td>
+			<td><form:input path="student.uName"/></td>
+			<td><form:errors path="student.uName" cssStyle= "color:red"/></td>
+		</tr>
+		<tr>
+			<td>测试密码字段：</td>
+			<td><form:input path="student.passWord"/></td>
+			<td><form:errors path="student.passWord" cssStyle= "color:red"/></td>
 		</tr>
 		<tr>
 			<td><input type="submit" value="提交"/></td>

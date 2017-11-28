@@ -17,5 +17,8 @@
 生日：<fmt:formatDate value="${requestScope.user.birthday}" 
 	pattern="yyyy年MM月dd日"/><br>
 电话：${requestScope.user.phone }<br>
+
+测试姓名字段：{requestScope.user.student.uName}<br>
+测试密码字段：{requestScope.user.student.passWord}<br>
 </body>
 </html>
