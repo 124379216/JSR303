@@ -17,8 +17,6 @@
     <context:component-scan base-package="org.fkit"/>
     
     <mvc:annotation-driven/>
-    
-    <bean class="org.fkit.event.util.SpringContextHolder" />
  
   <!-- 国际化 -->  
 	<bean id="messageSource"  
