@@ -2,61 +2,6 @@
 
 hibernate-validator校验框架，使用注解方式对前端提交到后台的数据进行校验，校验不通过时通过标签的方式回显到页面。
 
-1.  spring中配置注角扫描和注解驱动：
-        <context:component-scan base-package="org.fkit"/>
-        <mvc:annotation-driven/>
-2.  根据实体类配置国际化文件，此配置是说有多个以message名称开头的文件：
-         <!-- 国际化 -->  
-        <bean id="messageSource"  
-            class="org.springframework.context.support.ResourceBundleMessageSource">  
-            <!-- 国际化资源文件名 -->
-            <property name="basenames" value="message"/>
-        </bean> 
-3. controller中配置：
-         @RequestMapping(value="/login",method=RequestMethod.POST)
-         public String login(
-                 @Valid @ModelAttribute("user")  User user,
-                 BindingResult bindingResult,
-                 Model model) {
-             logger.info(user);
-             logger.info(user.getStudent());
-             logger.info(StringUtils.isNotEmpty(user.getStudent().getuName())?1:0);
-             logger.info(bindingResult.hasErrors());
-             if(bindingResult.hasErrors()){
-                 return "registerForm";
-             }
-             model.addAttribute("user", user);
-             return "success";
-         }
-4.  对应JSP配置：
-     <form:form commandName="user" method="post" action="login" >
-        <table>
-            <tr>
-                <td>登录名:</td>
-                <td><form:input path="loginname"/></td>
-                <td><form:errors path="loginname" cssStyle= "color:red"/></td>
-            </tr>
-            <tr>
-                <td>测试密码字段：</td>
-                <td><form:input path="student.passWord"/></td>
-                <td><form:errors path="student.passWord" cssStyle= "color:red"/></td>
-            </tr>
-            <tr>
-                <td><input type="submit" value="提交"/></td>
-            </tr>
-        </table>
-    </form:form>
- 5. 校验的对象中包含另一个对象：
-    	@NotNull
-        @Valid
-        private StudentDomain student;
- 
-
-
-
-
-
-
 
 附录：
 
